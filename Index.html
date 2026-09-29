@@ -1,0 +1,430 @@
+<title>Kunal Taneja</title>
+<meta name="description" content="Kunal Taneja, software engineer building .NET systems and applied AI. Gurugram, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&text=%E3%82%AF%E3%83%8A%E3%83%AB%E3%83%BB%E3%82%BF%E3%83%8D%E3%82%B8%E3%83%A3%E5%8D%B0%E6%97%A5%E6%9C%AC%E8%AA%9E&display=swap">
+<style>
+/* Layout: a two-column index. Small mono labels on the left, content on the right, lots of air. One red seal is the only colour.
+   Motion: a short load sequence, then everything is driven by scroll. Custom cursor on mouse devices only. */
+:root {
+  --paper: #FFFFFF;
+  --ink: #0E0E0E;
+  --quiet: #6E6E6B;
+  --rule: #E7E7E4;
+  --seal: #C8322B;
+  --sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --mono: "Geist Mono", ui-monospace, Consolas, monospace;
+  --jp: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #0D0D0C; --ink: #EDEDEA; --quiet: #8A8A86; --rule: #232321; --seal: #D9463E; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #0D0D0C; --ink: #EDEDEA; --quiet: #8A8A86; --rule: #232321; --seal: #D9463E; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-weight: 400; font-size: 1rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-inline: 24px; padding-block: 0;
+  overflow-x: hidden;
+}
+::selection { background: var(--ink); color: var(--paper); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 1px solid var(--ink); outline-offset: 4px; }
+.page { max-width: 980px; margin: 0 auto; }
+
+/* scroll progress */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: var(--seal); transform-origin: 0 50%; transform: scaleX(0); z-index: 50; }
+
+/* top line */
+.top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-block: 28px; font-family: var(--mono); font-size: .75rem; color: var(--quiet); letter-spacing: .02em; }
+.top .jp { font-family: var(--jp); font-weight: 300; letter-spacing: .2em; font-size: .8rem; }
+
+/* hero */
+.hero { padding-block: 10vh 12vh; display: grid; grid-template-columns: 1fr 340px; gap: 56px; align-items: end; }
+.hero > * { min-width: 0; }
+.hero h1 { font-weight: 300; font-size: clamp(3rem, 11vw, 8.5rem); line-height: .92; letter-spacing: -.055em; margin: 0; will-change: transform; }
+.hero h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+.hero h1 .ch { display: inline-block; }
+.hero p { max-width: 30em; margin: 40px 0 0; font-size: clamp(1.05rem, 1.8vw, 1.3rem); font-weight: 300; line-height: 1.5; color: var(--quiet); text-wrap: pretty; }
+.hero p b { color: var(--ink); font-weight: 400; }
+.portrait { margin: 0; position: relative; aspect-ratio: 4 / 5; max-width: 100%; background: #000; overflow: hidden; }
+.portrait img { width: 100%; height: 115%; object-fit: cover; object-position: 50% 18%; display: block; filter: grayscale(1) contrast(1.05); transition: filter .8s ease; will-change: transform; }
+.portrait:hover img { filter: grayscale(0) contrast(1); }
+.seal {
+  position: absolute; right: 14px; bottom: 14px; background: var(--paper);
+  width: 44px; height: 44px; border: 1.5px solid var(--seal); border-radius: 4px; color: var(--seal);
+  font-family: var(--jp); font-weight: 300; font-size: 1.4rem; display: grid; place-items: center;
+  transform: rotate(-4deg);
+}
+.scrollhint { display: flex; align-items: center; gap: 12px; margin-top: 56px; font-family: var(--mono); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--quiet); }
+.scrollhint i { display: block; width: 48px; height: 1px; background: var(--rule); position: relative; overflow: hidden; }
+.scrollhint i::after { content: ""; position: absolute; inset: 0; background: var(--ink); animation: hint 2.2s var(--ease) infinite; }
+@keyframes hint { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
+
+/* index rows */
+.row { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding-block: 72px; border-top: 1px solid var(--rule); }
+.row > * { min-width: 0; }
+.label { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--quiet); padding-top: 6px; }
+.lead { font-size: 1.6rem; font-weight: 300; line-height: 1.45; letter-spacing: -.015em; max-width: 30em; margin: 0; text-wrap: pretty; }
+.lead + .lead { margin-top: 28px; }
+.lead .w { transition: opacity .35s linear; }
+.js-motion .lead .w { opacity: .14; }
+.js-motion .lead .w.on { opacity: 1; }
+
+/* work list */
+.work { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+.work li { border-bottom: 1px solid var(--rule); }
+.item { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 32px 20px; margin-inline: -20px; position: relative; isolation: isolate; transition: color .45s var(--ease); }
+.item::before { content: ""; position: absolute; inset: 0; background: var(--ink); transform: scaleY(0); transform-origin: 50% 100%; transition: transform .55s var(--ease); z-index: -1; }
+.item > * { min-width: 0; transition: transform .55s var(--ease), color .45s var(--ease); }
+.item h3 { font-size: 1.5rem; font-weight: 400; letter-spacing: -.025em; margin: 0; }
+.item .kind { font-family: var(--mono); font-size: .72rem; color: var(--quiet); letter-spacing: .04em; text-align: right; padding-top: 10px; white-space: nowrap; }
+.item p { grid-column: 1 / -1; margin: 0; color: var(--quiet); max-width: 38em; }
+.item .stack { grid-column: 1 / -1; font-family: var(--mono); font-size: .72rem; color: var(--quiet); letter-spacing: .02em; }
+.item .arrow { display: inline-block; margin-left: 8px; font-weight: 300; transition: transform .45s var(--ease); }
+@media (hover: hover) {
+  .item:hover { color: var(--paper); }
+  .item:hover::before { transform: scaleY(1); transform-origin: 50% 0; }
+  .item:hover > * { color: var(--paper); }
+  .item:hover h3 { transform: translateX(14px); }
+  .item:hover p, .item:hover .stack { transform: translateX(14px); opacity: .75; }
+  .item:hover .arrow { transform: translate(4px, -4px) rotate(0deg); }
+}
+
+/* capabilities marquee */
+.marquee-row { padding-block: 72px; border-top: 1px solid var(--rule); overflow: hidden; margin-inline: -24px; }
+.marquee-row .label { padding-inline: 24px; max-width: 980px; margin: 0 auto 28px; }
+.marquee { display: flex; white-space: nowrap; will-change: transform; }
+.marquee span { font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 300; letter-spacing: -.045em; line-height: 1.15; padding-right: .5em; }
+.marquee span::after { content: "/"; color: var(--rule); padding-left: .5em; }
+.marquee.rev span { color: var(--quiet); }
+
+/* facts */
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 32px; margin: 0; }
+.facts > div { min-width: 0; }
+.facts dt { font-size: 1.1rem; margin: 0; }
+.facts dd { margin: 4px 0 0; color: var(--quiet); font-size: .92rem; }
+.facts .yr { font-family: var(--mono); font-size: .72rem; color: var(--quiet); font-variant-numeric: tabular-nums; display: block; margin-bottom: 6px; }
+
+/* contact */
+.contact h2 { font-weight: 300; font-size: clamp(2.2rem, 7vw, 4.6rem); letter-spacing: -.05em; line-height: 1; margin: 0 0 44px; }
+.links { display: flex; flex-wrap: wrap; gap: 16px; }
+.links a { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border: 1px solid var(--ink); border-radius: 999px; font-size: 1rem; position: relative; overflow: hidden; isolation: isolate; transition: color .4s var(--ease); }
+.links a::before { content: ""; position: absolute; inset: 0; background: var(--ink); border-radius: inherit; transform: translateY(101%); transition: transform .45s var(--ease); z-index: -1; }
+.links a:hover { color: var(--paper); }
+.links a:hover::before { transform: translateY(0); }
+
+.item .demo { margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--rule); color: var(--ink); }
+.item .demo.live::before { content: "●"; color: #2F9E44; }
+.item .demo::before { content: "▶"; font-size: .6rem; margin-right: 8px; vertical-align: 1px; }
+@media (hover: hover) { .item:hover .demo { color: var(--paper); } }
+footer { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 48px 36px; border-top: 1px solid var(--rule); margin-top: 72px; font-family: var(--mono); font-size: .72rem; color: var(--quiet); }
+
+/* reveal on scroll: only elements below the fold at load get hidden (see script) */
+.rv { transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
+.rv.wait { opacity: 0; transform: translateY(40px); }
+
+/* load sequence */
+.js-motion .hero h1 .ch { animation: rise 1.1s var(--ease) both; animation-delay: calc(var(--i) * 45ms + 100ms); }
+.js-motion .hero .portrait { animation: unveil 1.4s var(--ease) both .2s; }
+.js-motion .hero p, .js-motion .scrollhint { animation: fade 1s var(--ease) both .75s; }
+@keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes unveil { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes fade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* custom cursor (mouse devices only, enabled by script) */
+/* one white disc blended with "difference": it inverts whatever is under it, in either theme */
+.cursor { position: fixed; top: 0; left: 0; width: 0; height: 0; pointer-events: none; z-index: 100; mix-blend-mode: difference; opacity: 0; transition: opacity .3s; }
+.cursor b { position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: #fff; transform: translate(-50%, -50%) scale(1); transition: transform .45s var(--ease); }
+.has-cursor .cursor { opacity: 1; }
+.has-cursor .cursor.hide { opacity: 0; }
+.has-cursor, .has-cursor a, .has-cursor button, .has-cursor .item { cursor: none; }
+.cursor.link b { transform: translate(-50%, -50%) scale(3.4); }
+.cursor.view b { transform: translate(-50%, -50%) scale(6); }
+.cursor.text b { transform: translate(-50%, -50%) scale(.45); }
+.cursor { transition: opacity .3s, mix-blend-mode 0s; }
+.cursor.photo { mix-blend-mode: normal; }
+/* over the photo: the photo turns to colour and the cursor becomes a lens that shows it in black and white */
+.cursor.photo b {
+  width: 110px; height: 110px; background: transparent; border: 1px solid rgba(255,255,255,.55);
+  -webkit-backdrop-filter: grayscale(1) contrast(1.08); backdrop-filter: grayscale(1) contrast(1.08);
+  transform: translate(-50%, -50%) scale(1);
+}
+.cursor b { transition: transform .45s var(--ease), background-color .3s, border-color .3s, width .45s var(--ease), height .45s var(--ease); border: 1px solid transparent; }
+.cursor.down b { transform: translate(-50%, -50%) scale(.8); }
+
+@media (max-width: 760px) {
+  .row { grid-template-columns: 1fr; gap: 20px; padding-block: 52px; }
+  .label { padding-top: 0; }
+  .lead { font-size: 1.25rem; }
+  .facts { grid-template-columns: 1fr; gap: 28px; }
+  .hero { padding-block: 6vh 10vh; grid-template-columns: 1fr; gap: 40px; }
+  .portrait { max-width: 360px; }
+  .seal { width: 36px; height: 36px; font-size: 1.1rem; }
+  .scrollhint { display: none; }
+}
+@media (max-width: 480px) {
+  body { padding-inline: 16px; }
+  .marquee-row { margin-inline: -16px; }
+  .marquee-row .label { padding-inline: 16px; }
+  .item { grid-template-columns: 1fr; padding-inline: 16px; margin-inline: -16px; }
+  .item .kind { text-align: left; padding-top: 0; order: -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+
+<div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><b></b></div>
+
+<div class="page">
+  <div class="top">
+    <span>Gurugram, India</span>
+    <span class="jp" lang="ja">クナル・タネジャ</span>
+  </div>
+
+  <header class="hero">
+    <div class="intro">
+      <h1 aria-label="Kunal Taneja"><span class="line">Kunal</span><span class="line">Taneja</span></h1>
+      <p><b>Software engineer</b> building production systems on <b>.NET</b> and applied AI that does real work, from recommendation engines to autonomous desktop agents.</p>
+      <div class="scrollhint" aria-hidden="true"><i></i>Scroll</div>
+    </div>
+    <figure class="portrait">
+      <img src="kunal.jpg" alt="Portrait of Kunal Taneja" width="1000" height="1000">
+      <div class="seal" lang="ja" aria-hidden="true">印</div>
+    </figure>
+  </header>
+
+  <section class="row">
+    <div class="label rv">About</div>
+    <div>
+      <p class="lead words">I've spent the last year shipping .NET software at CreditInsta, including the recommendation system that matches customers with the right credit card.</p>
+      <p class="lead words">On my own time I build AI systems end to end: local language models, computer vision and OS automation, put together into tools that people can actually use.</p>
+    </div>
+  </section>
+
+  <section class="row" id="work">
+    <div class="label rv">Selected work</div>
+    <ul class="work">
+      <li class="rv">
+        <a class="item" href="https://creditinsta.com/cardmatch" target="_blank" rel="noopener">
+          <h3>CardMatch<span class="arrow" aria-hidden="true">↗</span></h3>
+          <span class="kind">CreditInsta · Production</span>
+          <p>A credit card recommendation engine that looks at a customer's profile and suggests the cards that fit them best. Live on CreditInsta's platform.</p>
+          <span class="stack">.NET · C# <span class="demo live">creditinsta.com/cardmatch</span></span>
+        </a>
+      </li>
+      <li class="rv">
+        <a class="item" href="https://lnkd.in/g4jF2bVy" target="_blank" rel="noopener" data-cursor="view">
+          <h3>JARVIS<span class="arrow" aria-hidden="true">↗</span></h3>
+          <span class="kind">AI agent · Open source</span>
+          <p>A voice-driven desktop assistant that runs entirely on local models. It classifies intent, plans each request as a JSON task graph, reads the screen with a vision model, and carries out the plan through native OS automation.</p>
+          <span class="stack">Python · Ollama · DeepSeek · Phi · LLaVA · pywinauto · Selenium</span>
+        </a>
+      </li>
+      <li class="rv">
+        <a class="item" href="https://www.youtube.com/watch?v=0Kv8lY3-TnA" target="_blank" rel="noopener">
+          <h3>Japanese Translator for Learners<span class="arrow" aria-hidden="true">↗</span></h3>
+          <span class="kind">Mobile · Computer vision</span>
+          <p>Photograph any Japanese text and the app recognises the characters, then gives the romaji reading and the English meaning. Signs, menus and books become readable on the spot.</p>
+          <span class="stack">React Native · OCR · Translation <span class="demo">Watch demo · 2:01</span></span>
+        </a>
+      </li>
+      <li class="rv">
+        <a class="item" href="https://www.youtube.com/watch?v=_-iP_WVsHy0" target="_blank" rel="noopener">
+          <h3>The Multiverse of Rick and Morty<span class="arrow" aria-hidden="true">↗</span></h3>
+          <span class="kind">Mobile app</span>
+          <p>A browsable catalogue of every character in the series, with a full detail view for each one.</p>
+          <span class="stack">React Native · REST API <span class="demo">Watch demo · 1:38</span></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="marquee-row" aria-label="Capabilities">
+    <div class="label">Capabilities</div>
+    <div class="marquee" data-speed="1" aria-hidden="true"><span>C#</span><span>.NET</span><span>Python</span><span>Recommendation systems</span><span>LLM integration</span><span>Local inference</span></div>
+    <div class="marquee rev" data-speed="-1" aria-hidden="true"><span>Computer vision</span><span>OCR</span><span>RAG</span><span>AI agents</span><span>Desktop automation</span><span>React Native</span></div>
+    <p style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">C#, .NET, Python, recommendation systems, LLM integration, local inference with Ollama, computer vision and OCR, RAG, AI agents, desktop and web automation, React Native.</p>
+  </section>
+
+  <section class="row">
+    <div class="label rv">Experience</div>
+    <dl class="facts">
+      <div class="rv"><span class="yr">2025 — Present</span><dt>.NET Developer, CreditInsta</dt><dd>Gurugram</dd></div>
+      <div class="rv" style="--d:.1s"><span class="yr">2022 — 2026</span><dt>Gurugram University</dt><dd>Graduate</dd></div>
+      <div class="rv"><span class="yr">2025</span><dt>GenAI Powered Data Analytics</dt><dd>Tata · Forage</dd></div>
+    </dl>
+  </section>
+
+  <section class="row">
+    <div class="label rv">Languages</div>
+    <dl class="facts">
+      <div class="rv"><dt><span lang="ja">日本語</span> · Japanese</dt><dd>Studying, elementary proficiency</dd></div>
+    </dl>
+  </section>
+
+  <section class="row contact" id="contact">
+    <div class="label rv">Contact</div>
+    <div>
+      <h2 class="rv">Let's build<br>something precise.</h2>
+      <div class="links rv" style="--d:.15s">
+        <a href="mailto:tanejakunal533@gmail.com" id="mail" data-magnet title="tanejakunal533@gmail.com">Email ↗</a>
+        <a href="https://www.linkedin.com/in/kunal-taneja-673436260/" target="_blank" rel="noopener" data-magnet>LinkedIn ↗</a>
+        <a href="https://lnkd.in/g4jF2bVy" target="_blank" rel="noopener" data-magnet>GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Kunal Taneja</span>
+    <span>Gurugram, India</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  // Split the name into letters for the load sequence
+  var i = 0;
+  document.querySelectorAll('.hero h1 .line').forEach(function (line) {
+    var text = line.textContent; line.textContent = '';
+    for (var c of text) {
+      var s = document.createElement('span');
+      s.className = 'ch'; s.textContent = c; s.style.setProperty('--i', i++);
+      s.setAttribute('aria-hidden', 'true');
+      line.appendChild(s);
+    }
+  });
+
+  // Split the About paragraphs into words that light up as you scroll
+  var words = [];
+  document.querySelectorAll('.words').forEach(function (p) {
+    var parts = p.textContent.split(/(\s+)/); p.textContent = '';
+    parts.forEach(function (part) {
+      if (/^\s+$/.test(part)) { p.appendChild(document.createTextNode(part)); return; }
+      var w = document.createElement('span'); w.className = 'w'; w.textContent = part;
+      p.appendChild(w); words.push(w);
+    });
+  });
+
+  // Email: opens the mail app, and also copies the address in case no mail app is set up
+  var mail = document.getElementById('mail');
+  mail.addEventListener('click', function () {
+    var label = 'Email ↗';
+    try {
+      navigator.clipboard.writeText('tanejakunal533@gmail.com').then(function () {
+        mail.textContent = 'Address copied';
+        setTimeout(function () { mail.textContent = label; }, 2000);
+      }, function () {});
+    } catch (e) {}
+  });
+
+  if (reduce) return;
+  root.classList.add('js-motion');
+
+  // Reveal on scroll. Anything already on screen at load stays visible.
+  var rv = [].slice.call(document.querySelectorAll('.rv'));
+  var vh = window.innerHeight;
+  rv.forEach(function (el) { if (el.getBoundingClientRect().top > vh * 0.92) el.classList.add('wait'); });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.remove('wait'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(function (el) { if (el.classList.contains('wait')) io.observe(el); });
+  } else { rv.forEach(function (el) { el.classList.remove('wait'); }); }
+
+  // Scroll-driven motion
+  var bar = document.querySelector('.progress');
+  var h1 = document.querySelector('.hero h1');
+  var img = document.querySelector('.portrait img');
+  var marquees = [].slice.call(document.querySelectorAll('.marquee'));
+  marquees.forEach(function (m) { m.innerHTML += m.innerHTML; }); // duplicate for a seamless loop
+  var drift = 0, lastY = window.scrollY, velocity = 0;
+
+  function frame() {
+    var y = window.scrollY, h = window.innerHeight;
+    var max = document.documentElement.scrollHeight - h;
+    bar.style.transform = 'scaleX(' + (max > 0 ? y / max : 0) + ')';
+
+    if (y < h * 1.2) {
+      h1.style.transform = 'translate3d(0,' + (y * 0.22) + 'px,0)';
+      h1.style.opacity = Math.max(0, 1 - y / (h * 0.8));
+      img.style.transform = 'translate3d(0,' + (-y * 0.08) + 'px,0)';
+    }
+
+    // words: light up progressively as the paragraph crosses the middle of the screen
+    for (var k = 0; k < words.length; k++) {
+      var r = words[k].getBoundingClientRect();
+      words[k].classList.toggle('on', r.top < h * 0.72);
+    }
+
+    // marquees move with scroll, faster when scrolling fast
+    velocity += ((y - lastY) - velocity) * 0.1; lastY = y;
+    drift += 0.35 + Math.abs(velocity) * 0.35;
+    marquees.forEach(function (m) {
+      var half = m.scrollWidth / 2; if (!half) return;
+      var dir = +m.dataset.speed;
+      var x = ((drift + y * 0.3) % half);
+      m.style.transform = 'translate3d(' + (dir > 0 ? -x : x - half) + 'px,0,0)';
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  // Custom cursor for mouse users
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var cur = document.querySelector('.cursor');
+  var mx = -100, my = -100, cx = -100, cy = -100, started = false;
+  window.addEventListener('mousemove', function (e) {
+    mx = e.clientX; my = e.clientY;
+    if (!started) { started = true; cx = mx; cy = my; root.classList.add('has-cursor'); }
+  });
+  document.addEventListener('mouseleave', function () { cur.classList.add('hide'); });
+  document.addEventListener('mouseenter', function () { cur.classList.remove('hide'); });
+  window.addEventListener('mousedown', function () { cur.classList.add('down'); });
+  window.addEventListener('mouseup', function () { cur.classList.remove('down'); });
+  (function follow() {
+    cx += (mx - cx) * 0.3; cy += (my - cy) * 0.3;
+    cur.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+    requestAnimationFrame(follow);
+  })();
+  // Work out the cursor state from whatever is under it. Runs on mouse move and on scroll,
+  // so content scrolling under a still mouse updates the cursor too.
+  var lastEl = null;
+  function sense() {
+    var el = document.elementFromPoint(mx, my);
+    if (!el || el === lastEl) return;
+    lastEl = el;
+    var ph = el.closest('.portrait');
+    var v = !ph && el.closest('.item');
+    var l = !ph && !v && el.closest('a, button');
+    var t = !ph && !v && !l && el.closest('p, h2, dt, dd, .marquee');
+    cur.classList.toggle('photo', !!ph);
+    cur.classList.toggle('view', !!v);
+    cur.classList.toggle('link', !!l);
+    cur.classList.toggle('text', !!t);
+  }
+  window.addEventListener('mousemove', sense);
+  window.addEventListener('scroll', function () { lastEl = null; requestAnimationFrame(sense); }, { passive: true });
+
+  // Magnetic contact buttons
+  document.querySelectorAll('[data-magnet]').forEach(function (b) {
+    b.addEventListener('mousemove', function (e) {
+      var r = b.getBoundingClientRect();
+      var x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
+      b.style.transform = 'translate(' + x * 0.25 + 'px,' + y * 0.35 + 'px)';
+    });
+    b.addEventListener('mouseleave', function () { b.style.transform = ''; });
+  });
+})();
+</script>
